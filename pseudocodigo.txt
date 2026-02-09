@@ -1,0 +1,114 @@
+Inicio del programa en CMD.
+
+Imprimir token con el código - print("TOKEN:", os.getenv("GITHUB_TOKEN")) en main.py para asegurar funcionamiento de token para consulta
+en archivo main.
+
+Se descarga el programa con sus carpetas. Posteriormente sobre cmd se ejectuta:
+
+docker build -t axanet .
+
+docker run -it -e GITHUB_TOKEN=%GITHUB_TOKEN% -v "%cd%\clientes:/app/clientes" axanet
+
+Debe de mostrar el token y el menu.
+
+Se importa OS para la ubicacion de archivos guardado, modificacion, consulta e eliminicacion sobre windows enlazado a GitHub.
+
+Se importa token para acceder al token creado para realizar el evento de consulta.
+
+Se importa requests para obtener la API de dispatches del proyecto, convertir la informacion a Jason y los headers.
+
+
+Funcion Notificar Cliente.
+
+Variable token para cachar el token de GitHub.
+variable url para cachar la direccion el API de dispatches del proyecto.
+Diccionario Headers y data para validar token, crear evento y cachar nombre consultado.
+Requests post para subir detalles de consulta a GitHub.
+
+Diccionario Clientes vacio al inicio con variable carpeta clientes referenciando diccionario clientes.
+
+Logica para crear carpeta en caso de no existir	para ir agregando clientes.
+
+
+Funcion Crear Cliente.
+
+Agregar nombre de cliente con input y cachar ruta con nombre de cliente creado.
+
+Logica de no crear cliente si ya existe.
+
+Agregar servicio de cliente con input
+
+Generar archivo y cacharlo bajo la variable archivo.
+
+Abrir archivo nuevo y agregar nombre y servicio.
+
+Cachar bajo diccionario clientes nombre de clientes que viene de archivo con nombre y ruta.
+
+Imprimir que el cliente fue creado correctamente.
+
+
+Funcion consultar Cliente
+
+Cachar en variable con input nombre de cliente
+
+Logica en donde si cliente no existe terminar la function e indicar que no existe.
+
+En caso de existir mostrar con R la informacion del cliente seleccionado
+
+Mediante funcion consultar consulta con parametro nombre mostrar que cliente se reviso en workflow.
+
+
+Funcion consultar Lista.
+
+Imprimir la lista de cliente mediante for con componente de diccionario clientes: nombre.
+
+Imprimir la lista de cliente mediante for con componentes de diccionario clientes: nombre y archivo indicando key y value.
+
+Condicion para mostrar mensaje que lista esta vacia en caso de tamaño ser igual a 0.
+
+Mediante funcion consultar consulta con parametro lista completa de clientes mostrar clientes.
+
+
+Funcion actualizar cliente.
+
+Cachar nombre con input.
+Cachar ruta con nombre de input y carpeta clientes.
+Logica de si no existe ruta mostrar mensaje que no existe cliente.
+En caso de existir cachar nuevo servicio con variable servicio con un input.
+
+Mediante open a y write escribir servicio adicional en archivo existente.
+Imprimir cliente actualizado correctamente.
+
+
+Funcion Borrar Cliente
+
+Cachar nombre a borrar con input en variable nombre
+Logica de si nombre no existe no borrar registro.
+Si cliente existe removerlo con remove en la direccion de la ruta con os.
+Borrar mediante del nombre en diccionario Tambien.
+
+Imprimir cliente eliminado correctamente.
+
+Funcion Menu.
+
+Mediante while true permitir que el menu se despliegue
+
+Opciones mostradas con print y numero que van relacionadas con funciones previas mediante if, elif, elif con break para cerrar
+y else para numeros no reconocidos.
+
+Llamar a la funcion menu al final para correrlo siempre que se corra main.py.
+
+
+Resultados de workflow.
+
+Revisar en proyecto de GitHub --> Actions.
+
+Consultar Cliente, crear cliente o modificar cliente.
+
+Dar click Consultar Cliente, crear cliente o modificar cliente y ver set up job, mostrar clientes (detalle) y complete job
+
+
+
+
+
+

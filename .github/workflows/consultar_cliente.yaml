@@ -1,0 +1,14 @@
+name: Consultar Cliente
+
+on:
+  repository_dispatch:
+    types: [consulta_cliente]
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar cliente consultado
+        run: |
+          echo "Consulta realizada."
+          echo "Cliente consultado: ${{ github.event.client_payload.cliente }}"
