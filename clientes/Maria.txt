@@ -1,2 +1,0 @@
-Cliente: Maria
-Servicio: TS
