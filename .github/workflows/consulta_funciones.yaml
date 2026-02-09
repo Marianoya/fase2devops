@@ -1,4 +1,4 @@
-name: Consultar funciones
+name: Consulta funciones
 
 on:
   repository_dispatch:

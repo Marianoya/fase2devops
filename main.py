@@ -36,7 +36,7 @@ def consultar_mejoras(nombre_mejora):
     }
     requests.post(url, json=data, headers=headers)
 
-def notificar_modificacion(nombre_funcion):
+def notificar_funcion(nombre_funcion):
     token = os.getenv("GITHUB_TOKEN")
     url = url_consulta
     headers = {
@@ -205,7 +205,7 @@ def mostrar_mejoras():
             print("\n--- Información de la mejora ---")
             print(f.read())
     
-    notificar_consulta(nombre_mejora)
+    consultar_mejoras(nombre_mejora)
 
 
 funciones= {}
@@ -265,7 +265,7 @@ def mostrar_funciones():
             print("\n--- Información de la función ---")
             print(f.read())
     
-    notificar_consulta(nombre_funcion)
+    notificar_funcion(nombre_funcion)
 
 
 
@@ -310,7 +310,7 @@ def menu():
         elif opcion == "11":
             mostrar_funciones()
         elif opcion == "12":
-            print("Saliendo del sistema. Gracias por usar Axanet.")
+            print("Saliendo del sistema. Gracias por usar Amazon.")
             break
         else:
             print("Opción no válida. Por favor, ingresa nuevamente un numero correcto.")

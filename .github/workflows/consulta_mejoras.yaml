@@ -1,4 +1,4 @@
-name: Consultar mejoras
+name: Consulta mejoras
 
 on:
   repository_dispatch:
