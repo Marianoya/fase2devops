@@ -22,7 +22,7 @@ def notificar_consulta(nombre_cliente):
     }
     requests.post(url, json=data, headers=headers)
 
-def consultar_mejoras():
+def consultar_mejoras(nombre_mejora):
     token = os.getenv("GITHUB_TOKEN")
     url = url_consulta
     headers = {
@@ -32,12 +32,12 @@ def consultar_mejoras():
     data = {
         "event_type": "consulta_mejora",
         "client_payload": {
-            "mejora": "consulta de mejoras registradas"
+            "mejora": nombre_mejora
         }
     }
     requests.post(url, json=data, headers=headers)
 
-def notificar_modificacion(nombre_mejora):
+def notificar_modificacion(nombre_funcion):
     token = os.getenv("GITHUB_TOKEN")
     url = url_consulta
     headers = {
@@ -45,9 +45,9 @@ def notificar_modificacion(nombre_mejora):
         "Authorization": f"Bearer {token}"
     }
     data = {
-        "event_type": "modificacion_mejora",
+        "event_type": "consulta_funciones",
         "client_payload": {
-            "mejora": nombre_mejora
+            "funcion": nombre_funcion
         }
     }
     requests.post(url, json=data, headers=headers)
@@ -170,12 +170,12 @@ def registrar_mejora():
         print("La mejora propuesta ya existe. No se puede crear nuevamente.")
         return
 
-    servicio_mejora = input("Ingresa Servicio solicitado por el cliente: ")
+    servicio_mejora = input("Ingresa Servicio solicitado a mejorar: ")
     archivo_mejora = f"{CARPETA_MEJORAS}/{nombre_mejora.replace(' ', '_')}.txt"
 
     with open(archivo_mejora, "w") as f:
         f.write(f"Mejora: {nombre_mejora}\n")
-        f.write(f"Servicio de la aplicacion: {servicio_mejora}\n")
+        f.write(f"Servicio de la aplicacion a mejorar: {servicio_mejora}\n")
 
     mejoras[nombre_mejora] = archivo_mejora
     print("Mejora registrada correctamente.")
@@ -188,15 +188,15 @@ def modificar_codigo():
         print("La mejora no existe. No se puede modificar.")
         return
 
-    nuevo_servicio = input("Nuevo servicio solicitado con la misma oportunidad de mejora: ")
+    nuevo_status = input("Nuevo estado de la mejora: ")
 
     with open(mejoras[nombre_mejora], "a") as f:
-        f.write(f"Servicio adicional: {nuevo_servicio}\n")
+        f.write(f"Nuevo estado: {nuevo_status}\n")
 
     print("Mejora actualizada correctamente.")
 
 def mostrar_mejoras():
-    nombre_mejora = input("Ingresa Nombre de la mejora para visulizar: ")
+    nombre_mejora = input("Ingresa Nombre de la mejora para visualizar: ")
 
     if nombre_mejora not in mejoras:
         print("Mejora no encontrada en la base de datos.")
@@ -230,12 +230,12 @@ def solicitar_nuevas_funciones():
         print("La función propuesta ya existe. No se puede crear nuevamente.")
         return
 
-    servicio_funcion = input("Ingresa Servicio solicitado por el cliente: ")
+    dpto_funcion = input("Ingresa Departamento solicitado por el cliente: ")
     archivo_funcion = f"{CARPETA_FUNCIONES}/{nombre_funcion.replace(' ', '_')}.txt"
 
     with open(archivo_funcion, "w") as f:
         f.write(f"Función: {nombre_funcion}\n")
-        f.write(f"Servicio de la aplicacion: {servicio_funcion}\n")
+        f.write(f"Departamento de la aplicacion: {dpto_funcion}\n")
 
     funciones[nombre_funcion] = archivo_funcion
     print("Función registrada correctamente.")
@@ -248,10 +248,10 @@ def modificar_funciones():
         print("La función no existe. No se puede modificar.")
         return
 
-    nuevo_servicio = input("Nuevo servicio solicitado con la misma oportunidad de función: ")
+    nuevo_status = input("Nuevo estado de la función: ")
 
     with open(funciones[nombre_funcion], "a") as f:
-        f.write(f"Servicio adicional: {nuevo_servicio}\n")
+        f.write(f"Nuevo estado: {nuevo_status}\n")
 
     print("Función actualizada correctamente.")
 
