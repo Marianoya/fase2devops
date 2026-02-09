@@ -8,7 +8,7 @@ jobs:
   consultar:
     runs-on: ubuntu-latest
     steps:
-      - name: Mostrar mejora consultada
+      - name: Mejora consultada
         run: |
           echo "Consulta realizada."
           echo "Mejora consultada: ${{ github.event.client_payload.mejora }}"

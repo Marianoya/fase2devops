@@ -8,7 +8,7 @@ jobs:
   consultar:
     runs-on: ubuntu-latest
     steps:
-      - name: Mostrar función consultada
+      - name: Función consultada
         run: |
           echo "Consulta realizada."
           echo "Función consultada: ${{ github.event.client_payload.funcion }}"
