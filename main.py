@@ -1,6 +1,5 @@
 #Version1.1.
 import os
-import token
 import requests
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
