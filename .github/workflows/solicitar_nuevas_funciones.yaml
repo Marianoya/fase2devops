@@ -1,0 +1,31 @@
+name: solicitar nuevas funciones
+
+on:
+  push:
+    paths:
+      - "mejoras/**"
+
+jobs:
+  crear:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detectar creación de archivos de nuevas funciones(s)
+        run: |
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            DIFF=$(git diff --name-status HEAD~1 HEAD)
+          else
+            DIFF=$(git diff --name-status HEAD)
+          fi
+
+          if echo "$DIFF" | grep "^A"; then
+              echo "Archivos creados:"
+              echo "$DIFF" | grep "^A"
+              echo "Nueva(s) función(es) registrada(s). Notificación del equipo de AXA."
+          else
+              echo "No hubo creación de nueva función. Finalizando sin error."
+          fi

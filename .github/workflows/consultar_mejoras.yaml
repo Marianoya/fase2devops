@@ -1,0 +1,14 @@
+name: Consultar mejoras
+
+on:
+  repository_dispatch:
+    types: [consulta_mejora]
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar mejora consultada
+        run: |
+          echo "Consulta realizada."
+          echo "Mejora consultada: ${{ github.event.client_payload.mejora }}"

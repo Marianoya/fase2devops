@@ -1,0 +1,16 @@
+name: Consultar funciones
+
+on:
+  repository_dispatch:
+    types: [consulta_funciones]
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar función consultada
+        run: |
+          echo "Consulta realizada."
+          echo "Función consultada: ${{ github.event.client_payload.funcion }}"
+
+          

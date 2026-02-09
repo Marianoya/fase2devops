@@ -1,0 +1,31 @@
+name: Modificar funciones
+
+on:
+  push:
+    paths:
+      - "funciones/**"
+
+jobs:
+  modificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Modificar funciones
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # ← NECESARIO PARA HEAD~1
+
+      - name: Detectar modificación de funciones
+        run: |
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            DIFF=$(git diff --name-status HEAD~1 HEAD)
+          else
+            DIFF=$(git diff --name-status HEAD)
+          fi
+
+          if echo "$DIFF" | grep "^M"; then
+              echo "Archivos modificados:"
+              echo "$DIFF" | grep "^M"
+              echo "Funciones modificadas. Notificación del equipo de AXA."
+          else
+              echo "No hubo modificación de funciones. Finalizando sin error."
+          fi
