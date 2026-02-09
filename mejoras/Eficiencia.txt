@@ -1,0 +1,3 @@
+Mejora: Eficiencia
+Servicio de la aplicacion a mejorar: Chat
+Nuevo estado: Completado
