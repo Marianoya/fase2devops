@@ -25,7 +25,7 @@ jobs:
           if echo "$DIFF" | grep "^M"; then
               echo "Archivos modificados:"
               echo "$DIFF" | grep "^M"
-              echo "Código modificado. Notificación del equipo de AXA."
+              echo "Código modificado. Notificación del equipo de Amazon."
           else
               echo "No hubo modificación de código. Finalizando sin error."
           fi

@@ -1,2 +1,3 @@
 Mejora: Rapidez
 Servicio de la aplicacion a mejorar: Web
+Nuevo estado: 80%

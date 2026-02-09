@@ -25,7 +25,7 @@ jobs:
           if echo "$DIFF" | grep "^M"; then
               echo "Archivos modificados:"
               echo "$DIFF" | grep "^M"
-              echo "Cliente(s) modificado. Notificación del equipo de AXA."
+              echo "Cliente(s) modificado. Notificación del equipo de Amazon."
           else
               echo "No hubo modificación de cliente. Finalizando sin error."
           fi

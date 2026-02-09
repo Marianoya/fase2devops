@@ -25,7 +25,7 @@ jobs:
           if echo "$DIFF" | grep "^A"; then
               echo "Archivos creados:"
               echo "$DIFF" | grep "^A"
-              echo "Nueva(s) función(es) registrada(s). Notificación del equipo de AXA."
+              echo "Nueva(s) función(es) registrada(s). Notificación del equipo de Amazon."
           else
               echo "No hubo creación de nueva función. Finalizando sin error."
           fi

@@ -1,0 +1,2 @@
+Mejora: velocidad
+Servicio de la aplicacion a mejorar: Chat
