@@ -2,6 +2,9 @@
 import os
 import requests
 
+
+print("Nueva versión desplegada automáticamente")
+
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
 app_json = "application/vnd.github+json"
 url_consulta = "https://api.github.com/repos/Marianoya/fase2devops/dispatches"
