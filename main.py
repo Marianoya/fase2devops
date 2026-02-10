@@ -3,7 +3,7 @@ import os
 import requests
 
 
-print("Nueva version deply automáticamente desde GitHub Actions")
+print("Nueva version prueba automáticamente desde GitHub Actions")
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
 app_json = "application/vnd.github+json"
