@@ -1,20 +1,17 @@
 #!/bin/bash
 set -e
 
-# Cargar variables de entorno
-if [ -f .env ]; then
-  export $(grep -v '^#' .env | xargs)
-fi
+CONTAINER_NAME=fase2devops
+IMAGE_NAME=fase2devops
 
-# Opcional: construir la imagen si no existe
-docker image inspect fase2devops >/dev/null 2>&1 || docker build -t fase2devops .
+docker stop $CONTAINER_NAME || true
+docker rm $CONTAINER_NAME || true
 
-# Detener contenedor previo si existe
-docker stop fase2devops-container >/dev/null 2>&1 || true
-docker rm fase2devops-container >/dev/null 2>&1 || true
+docker build -t $IMAGE_NAME .
 
-# Ejecutar contenedor en segundo plano (sin -it)
-docker run \
-  --name fase2devops-container \
-  -e GITHUB_TOKEN="$GITHUB_TOKEN" \
-  fase2devops
+docker run -d \
+  --name $CONTAINER_NAME \
+  -p 8000:8000 \
+  $IMAGE_NAME
+
+echo "Contenedor '$CONTAINER_NAME' ejecutándose en el puerto 8000"
