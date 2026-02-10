@@ -6,7 +6,7 @@ import requests
 print("Nueva version prueba automáticamente desde GitHub Actions")
 
 
-print("Nueva version con mejoras")
+print("Version estable")
 
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))

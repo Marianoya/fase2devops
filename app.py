@@ -75,7 +75,7 @@ def modificar_funcion(nombre):
 # ---------------- HEALTH CHECK ----------------
 @app.route("/", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "message": "API funcionando"})
+     return jsonify({"status": "ok", "message": "API funcionando"})
 
 
 if __name__ == "__main__":
