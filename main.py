@@ -285,7 +285,6 @@ def menu():
         else:
             print("Opción no válida. Por favor, ingresa nuevamente un numero correcto.")
 
-menu()
 
 # ---------- API ----------
 def api_crear_cliente(nombre, servicio):
@@ -403,3 +402,8 @@ def api_modificar_funcion(nombre, nuevo_estado):
         f.write(f"Nuevo estado: {nuevo_estado}\n")
 
     return {"mensaje": "Función actualizada correctamente"}
+
+if __name__ == "__main__":
+    menu()
+
+
