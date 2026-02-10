@@ -6,7 +6,7 @@ import requests
 print("Nueva version prueba automáticamente desde GitHub Actions")
 
 
-print("Version estable")
+print("Version estable de video")
 
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
@@ -293,80 +293,57 @@ def menu():
 # ---------- API ----------
 def api_crear_cliente(nombre, servicio):
     ruta = f"clientes/{nombre}.txt"
-
     if os.path.exists(ruta):
         return {"error": "El cliente ya existe"}
-
     archivo = f"{CARPETA_CLIENTES}/{nombre.replace(' ', '_')}.txt"
-
     with open(archivo, "w") as f:
         f.write(f"Cliente: {nombre}\n")
         f.write(f"Servicio: {servicio}\n")
-
     clientes[nombre] = archivo
     return {"mensaje": "Cliente creado correctamente", "cliente": nombre}
-
-
 def api_listar_clientes():
     return list(clientes.keys())
-
-
 def api_consultar_cliente(nombre):
     if nombre not in clientes:
         return {"error": "Cliente no encontrado"}
-
     with open(clientes[nombre], "r") as f:
         contenido = f.read()
-
     notificar_consulta(nombre)
     return {"cliente": nombre, "contenido": contenido}
-
 
 def api_borrar_cliente(nombre):
     if nombre not in clientes:
         return {"error": "Cliente no encontrado"}
-
     os.remove(clientes[nombre])
     del clientes[nombre]
-
     return {"mensaje": "Cliente eliminado correctamente"}
 
 
 # ---------- MEJORAS ----------
 def api_registrar_mejora(nombre, servicio):
     ruta = f"mejoras/{nombre}.txt"
-
     if os.path.exists(ruta):
         return {"error": "La mejora ya existe"}
-
     archivo = f"{CARPETA_MEJORAS}/{nombre.replace(' ', '_')}.txt"
-
     with open(archivo, "w") as f:
         f.write(f"Mejora: {nombre}\n")
         f.write(f"Servicio a mejorar: {servicio}\n")
-
     mejoras[nombre] = archivo
     return {"mensaje": "Mejora registrada correctamente"}
-
 
 def api_mostrar_mejora(nombre):
     if nombre not in mejoras:
         return {"error": "Mejora no encontrada"}
-
     with open(mejoras[nombre], "r") as f:
         contenido = f.read()
-
     consultar_mejoras(nombre)
     return {"mejora": nombre, "contenido": contenido}
-
 
 def api_modificar_mejora(nombre, nuevo_estado):
     if nombre not in mejoras:
         return {"error": "Mejora no encontrada"}
-
     with open(mejoras[nombre], "a") as f:
         f.write(f"Nuevo estado: {nuevo_estado}\n")
-
     return {"mensaje": "Mejora actualizada correctamente"}
 
 
