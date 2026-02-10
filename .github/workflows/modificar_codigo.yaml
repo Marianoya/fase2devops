@@ -1,10 +1,8 @@
 name: Modificar codigo
-
 on:
   push:
     paths:
       - "mejoras/**"
-
 jobs:
   modificar:
     runs-on: ubuntu-latest
@@ -13,7 +11,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 2   # ← NECESARIO PARA HEAD~1
-
       - name: Detectar modificación de código
         run: |
           if git rev-parse HEAD~1 >/dev/null 2>&1; then

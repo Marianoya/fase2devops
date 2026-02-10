@@ -32,10 +32,8 @@ def consultar_mejoras(nombre_mejora):
         "event_type": "consulta_mejora",
         "client_payload": {
             "mejora": nombre_mejora
-        }
-    }
+        }  }
     requests.post(url, json=data, headers=headers)
-
 def notificar_funcion(nombre_funcion):
     token = os.getenv("GITHUB_TOKEN")
     url = url_consulta
@@ -47,8 +45,7 @@ def notificar_funcion(nombre_funcion):
         "event_type": "consulta_funciones",
         "client_payload": {
             "funcion": nombre_funcion
-        }
-    }
+        }}
     requests.post(url, json=data, headers=headers)
 
 
@@ -149,49 +146,35 @@ def borrar_cliente():
 
 
 mejoras = {}
-
 CARPETA_MEJORAS = "mejoras"
-
 if not os.path.exists(CARPETA_MEJORAS):
     os.makedirs(CARPETA_MEJORAS)
-
 for archivo_mejora in os.listdir(CARPETA_MEJORAS):
     if archivo_mejora.endswith(".txt"):
         nombre_mejora = archivo_mejora.replace(".txt", "")
         mejoras[nombre_mejora] = f"{CARPETA_MEJORAS}/{archivo_mejora}"
-    
-
 def registrar_mejora():
     nombre_mejora = input("Ingresa la mejora para la aplicacion: ")
     ruta = f"mejoras/{nombre_mejora}.txt"
-
     if os.path.exists(ruta):
         print("La mejora propuesta ya existe. No se puede crear nuevamente.")
         return
-
     servicio_mejora = input("Ingresa Servicio solicitado a mejorar: ")
     archivo_mejora = f"{CARPETA_MEJORAS}/{nombre_mejora.replace(' ', '_')}.txt"
-
     with open(archivo_mejora, "w") as f:
         f.write(f"Mejora: {nombre_mejora}\n")
         f.write(f"Servicio de la aplicacion a mejorar: {servicio_mejora}\n")
-
     mejoras[nombre_mejora] = archivo_mejora
     print("Mejora registrada correctamente.")
-
 def modificar_codigo():
     nombre_mejora = input("Ingresa Nombre de la mejora para modificar el código de la aplicación: ")
     ruta = f"mejoras/{nombre_mejora}.txt"
-
     if not os.path.exists(ruta):
         print("La mejora no existe. No se puede modificar.")
         return
-
     nuevo_status = input("Nuevo estado de la mejora: ")
-
     with open(mejoras[nombre_mejora], "a") as f:
         f.write(f"Nuevo estado: {nuevo_status}\n")
-
     print("Mejora actualizada correctamente.")
 
 def mostrar_mejoras():
@@ -209,49 +192,35 @@ def mostrar_mejoras():
 
 
 funciones= {}
-
 CARPETA_FUNCIONES = "funciones"
-
 if not os.path.exists(CARPETA_FUNCIONES):
     os.makedirs(CARPETA_FUNCIONES)
-
 for archivo_funcion in os.listdir(CARPETA_FUNCIONES):
     if archivo_funcion.endswith(".txt"):
         nombre_funcion = archivo_funcion.replace(".txt", "")
         funciones[nombre_funcion] = f"{CARPETA_FUNCIONES}/{archivo_funcion}"
-    
-
 def solicitar_nuevas_funciones():
     nombre_funcion = input("Ingresa la nueva función para la aplicacion: ")
     ruta = f"funciones/{nombre_funcion}.txt"
-
     if os.path.exists(ruta):
         print("La función propuesta ya existe. No se puede crear nuevamente.")
         return
-
     dpto_funcion = input("Ingresa Departamento solicitado por el cliente: ")
     archivo_funcion = f"{CARPETA_FUNCIONES}/{nombre_funcion.replace(' ', '_')}.txt"
-
     with open(archivo_funcion, "w") as f:
         f.write(f"Función: {nombre_funcion}\n")
         f.write(f"Departamento de la aplicacion: {dpto_funcion}\n")
-
     funciones[nombre_funcion] = archivo_funcion
     print("Función registrada correctamente.")
-
 def modificar_funciones():
     nombre_funcion = input("Ingresa Nombre de la función para modificar el código de la aplicación: ")
     ruta = f"funciones/{nombre_funcion}.txt"
-
     if not os.path.exists(ruta):
         print("La función no existe. No se puede modificar.")
         return
-
     nuevo_status = input("Nuevo estado de la función: ")
-
     with open(funciones[nombre_funcion], "a") as f:
         f.write(f"Nuevo estado: {nuevo_status}\n")
-
     print("Función actualizada correctamente.")
 
 def mostrar_funciones():
@@ -284,9 +253,7 @@ def menu():
         print("10. Modificacion del código de las funciones de la aplicacion")
         print("11. Mostrar funciones registradas")
         print("12. Salir")
-
         opcion = input("Selecciona una opción: ")
-
         if opcion == "1":
             crear_cliente()
         elif opcion == "2":
