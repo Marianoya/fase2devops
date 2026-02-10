@@ -25,4 +25,4 @@ def health():
     return jsonify({"status": "ok", "message": "Fase2 DevOps API funcionando"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="54.172.163.86", port=8000)
