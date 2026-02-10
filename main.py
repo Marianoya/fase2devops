@@ -3,7 +3,7 @@ import os
 import requests
 
 
-print("Nueva versión de aws desplegada automáticamente")
+print("Nueva version desplegada automáticamente")
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
 app_json = "application/vnd.github+json"
