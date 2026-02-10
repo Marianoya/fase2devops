@@ -8,4 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar todo el proyecto
 COPY . .
 
-CMD ["python", "main.py"]
+EXPOSE 8000
+
+CMD ["python", "app.py"]
+
